@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <router-link to="/login">Login</router-link>
+            <router-link to="/main">Main</router-link>
+        </div>
+        <router-view></router-view> <!--뷰 인스턴스랑 라우터 인스턴스랑 이어주는 뷰-->
+    </div>
+<!-- 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> 
+-->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+
+    <script>
+        var LoginComponent = {
+            template: '<div>login</div>'
+        }
+
+        var MainComponent = {
+            template: '<div>main</main>'
+        }
+
+        var router = new VueRouter({
+            mode: 'history',
+            //페이지의 라우팅 정보
+            routes : [
+                //로그인페이지 정보
+                {
+                    // 페이지 url 
+                    path: '/login',
+                    // 해당 url에서 표시될 컴포넌트
+                    component: LoginComponent
+                },
+                //메인페이지 정보
+                {
+                    path: '/main',
+                    component: MainComponent
+                }
+            ]
+        });
+
+        new Vue({
+            el: '#app',
+            router: router // 오른쪽 라우터가 위에 변수(var router), 왼쪽이 속성명
+        });
+    </script>
+</body>
+</html>
